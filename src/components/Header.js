@@ -32,7 +32,7 @@ const StyledHeader = styled.div`
 const Header = () => {
     return (
       <StyledHeader>
-        <h1>Spotify Song Suggestion</h1>
+        <h1>Spotify Song Suggestor</h1>
         <Link className='header--home' to="/">Home</Link>
       </StyledHeader>
     )
