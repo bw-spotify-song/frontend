@@ -21,6 +21,7 @@ function App() {
         <Route path="/user/login" component={Login} />
 
         <Route path="/user/form" component={Register} />
+        
 
         {/* ------------- React-2 team ---------------- */}
         <PrivateRoute path="/song/list" component={SongList} />
