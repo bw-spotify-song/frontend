@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Example from './components/example/example';
+import Footer from './components/Footer';
 
 function App() {
   
@@ -32,6 +33,7 @@ function App() {
         <Route path='/example' component={Example} />
 
       </Switch>
+      <Footer />
     </Router>
   )
 }
