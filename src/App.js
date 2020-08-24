@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 //import PrivateRoute from './components/PrivateRoute'
 import SongList from './components/song/SongList'
+import SongAdd from './components/song/SongAdd';
 import Song from './components/song/Song';
 import Home from './components/Home';
 import Header from './components/Header';
@@ -30,6 +31,8 @@ function App() {
             <Route path="/song/list" component={SongList} />
 
             <Route path="/song/:id" component={Song} />
+
+            <Route path='/song/add' component={SongAdd} />
 
             {/*------------an example of spotify API-------------*/}
             <Route path="/example" component={Example} />
