@@ -3,7 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 //import PrivateRoute from './components/PrivateRoute'
 import SongList from './components/song/SongList'
-import SongAdd from './components/song/SongAdd';
 import Song from './components/song/Song';
 import Home from './components/Home';
 import Header from './components/Header';
@@ -11,6 +10,7 @@ import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Example from './components/example/example';
 import Footer from './components/Footer';
+import SongAdd from './components/song/SongAdd';
 
 function App() {
   
