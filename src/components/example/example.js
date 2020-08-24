@@ -19,7 +19,7 @@ const Example = () => {
     axiosWithSpotify()
       .get(`https://api.spotify.com/v1/tracks/?ids=${spotifyID.join(",")}`)
       .then((res) => {
-        console.log(res)
+        //console.log(res.data)
         setList(res.data.tracks)
       })
   }, [])
