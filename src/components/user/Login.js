@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import Input from "./Input";
 import * as yup from "yup";
 import axios from "axios";
+import loginFormSchema from './Validation'
 
 const Login = () => {
     // initialize data stuctures
@@ -18,6 +19,8 @@ const Login = () => {
     };
 
     const initialSubmitDisabled = true;
+
+   
     
     // initialize states
 
@@ -27,9 +30,45 @@ const Login = () => {
 
      // create authentication handlers/yup 
 
+     const validateChange = (e) => {
+        //this allows react to keep the event object to play nice with async op
+        e.persist();
+        //reach allows us to check a specific value of the schema
+        yup
+          .reach(loginFormSchema, e.target.name)
+          .validate(e.target.value)
+          .then((valid) =>{ 
+            setErrors({
+              ...errors,
+              [e.target.name]: ""
+            })
+            }
+          )
+          .catch((error) => {
+            setErrors({
+              ...errors,
+              [e.target.name]: error.errors[0]
+            })
+        }
+          );
+      };
+
      ///// waiting for JSX + form Handlers
 
      // side effects
+
+     
+
+    //  useEffect(() => {
+    //     // formSchema.Valid(formState).then(valid => setButtonDisabled(!valid));
+    //     if ((loginFormSchema)) {
+    //       setSubmitDisabled(true);
+    //     }
+    //     else {
+    //         setSubmitDisabled(false);
+    //     }
+    //     // console.log(validateChange())
+    //   }, [loginFormSchema]);
 
      // form handlers
 
@@ -38,7 +77,7 @@ const Login = () => {
         //ternary operator to determine the form value
         const value = e.target.value;
         setLoginState({...loginState, [e.target.name]: value});
-        // validateChange(e);
+        validateChange(e);
       };
 
       ///// submit handler
@@ -49,7 +88,14 @@ const Login = () => {
 
       ///// determine submit disabled handler
 
+      //// side effects
 
+      useEffect(() => {
+        loginFormSchema.isValid(loginState)
+          .then(valid => {
+            setSubmitDisabled(!valid);
+          })
+      }, [loginState]);
 
 
     return (
