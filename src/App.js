@@ -10,6 +10,7 @@ import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Example from './components/example/example';
 import Footer from './components/Footer';
+import ThemeProvider from 'react-theme-provider';
 
 function App() {
   
@@ -22,7 +23,11 @@ function App() {
             {/* ------------- React-1 team ---------------- */}
             <Route exact path="/" component={Home} />
 
-            <Route path="/user/login" component={Login} />
+            <Route path="/user/login">
+              <ThemeProvider>
+                <Login/>
+              </ThemeProvider>
+            </Route>
 
             <Route path="/user/form" component={Register} />
 
