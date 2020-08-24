@@ -9,8 +9,8 @@ import Header from './components/Header';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Example from './components/example/example';
-import Footer from './components/Footer';
-import ThemeProvider from 'react-theme-provider';
+import Footer from './components/Footer'
+import greyTheme from './components/Theme'
 
 function App() {
   
@@ -24,9 +24,7 @@ function App() {
             <Route exact path="/" component={Home} />
 
             <Route path="/user/login">
-              <ThemeProvider>
                 <Login/>
-              </ThemeProvider>
             </Route>
 
             <Route path="/user/form" component={Register} />
