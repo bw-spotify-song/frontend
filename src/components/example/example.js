@@ -19,7 +19,7 @@ const Example = () => {
     axiosWithSpotify()
       .get(`https://api.spotify.com/v1/tracks/?ids=${spotifyID.join(",")}`)
       .then((res) => {
-        //console.log(res.data.tracks)
+        console.log(res)
         setList(res.data.tracks)
       })
   }, [])
@@ -29,7 +29,7 @@ const Example = () => {
           <h6>This is an example of Spotify API usage</h6>
       {list.map((track) => {
         return (
-          <div id={track.id}>
+          <div key={track.id}>
             <img src={track.album.images[1].url} alt="cover"></img>
           </div>
         )
