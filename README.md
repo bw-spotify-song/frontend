@@ -1,5 +1,4 @@
 # Spotify Song Suggestor 
-# Web Unit 3 William Herman Branch
 
 ## Rubric (MVP)
 
