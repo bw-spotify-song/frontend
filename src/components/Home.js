@@ -5,13 +5,10 @@ import { axiosWithSpotify, getToken } from "../utils/example";
 ///spotify IDS
   
   const spotifyID = [
-    "3nvuPQTw2zuFAVuLsC9IYQ",
-    "2CT3r93YuSHtm57mjxvjhH",
-    "0LXosXV9ZvmzIpzUsOMuLv",
-    "1UI0l2L66HJ9AtoEOlHzv4",
-    "74X1epeRufHckhuX1KFD04",
-    "1V7VAMQQwJoHECiuaG36Pb",
-    "1LzNfuep1bnAUR9skqdHCK",
+    "76tg7ywRlzuLgavgQNV6s1", // Gimme A Track
+    "7F6VUTLu4qtAZZyy1lCf63", // Growing Pains
+    "4sRBeylk3ZxspMmmuzdeZ3", // Storm
+    "2XT3wj522c9dkcM1NaOVZc", // Tidal Shifts
   ]
   
   const Example = () => {

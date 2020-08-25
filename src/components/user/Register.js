@@ -94,7 +94,7 @@ const Register = () => {
         // }
   
         const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
-        console.log(value);
+        // console.log(value);
         setRegisterState({...registerState, [e.target.name]: value});
         validateChange([e.target.name, value]);
       };    
