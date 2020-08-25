@@ -70,18 +70,19 @@ export const fetchUserList = () => (dispatch) => {
 }
 // const user = useParams().id
 export const deleteUser = (id) => (dispatch) => {
-    console.log(id)
+    console.log('delete user', id)
     axiosWithAuth()
     
         .delete(`users/${id}`)
         .then(res => {
             dispatch({ type: DELETE_USER, payload: res.data})
-            
+            console.log('user deleted')
+            window.location.reload(true)
         })
         .catch(err => {
             console.log(err)
         })
-        window.location.reload(true)
+        
 }
 export const editUser = (id, info) => (dispatch) => {
     axiosWithAuth()
@@ -91,6 +92,6 @@ export const editUser = (id, info) => (dispatch) => {
         window.location.reload(true)
     })
     .catch(error => {
-        console.log(error)
+        console.log(error.message)
     })
 }

@@ -63,11 +63,11 @@ export const appReducer = (state = initialState, action) => {
       }
     case EDIT_USER:
       return {
-        ...state, userList: {
-          firstName: action.payload.firstName,
-          lastName: action.payload.lastName,
-          email: action.payload.email
-        }
+        // ...state, userList: {
+        //   firstName: action.payload.firstName,
+        //   lastName: action.payload.lastName,
+        //   email: action.payload.email
+        // }
       }
     default:
       return state

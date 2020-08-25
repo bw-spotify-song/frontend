@@ -13,7 +13,7 @@ const initialState = {
 const UserProfile = (props) => {
     const user = useParams().id
     const [info, setInfo] = useState(initialState)
-
+    console.log(user)
     const handleChange = e => {
         setInfo({
             ...info, [e.target.name]: e.target.value
@@ -21,17 +21,17 @@ const UserProfile = (props) => {
     }
     const handleSubmit = e => {
         e.preventDefault()
-        props.editUser(info)
+        props.editUser(user, info)
         setInfo(initialState)
         props.history.push('/admin')
     }
     useEffect(() => {
-        axiosWithAuth().get(`/users/${user.id}`)
+        axiosWithAuth().get(`/users/${user}`)
         .then(resp => {
             console.log(resp)
             setInfo({
-                firstname: resp.data.firstName,
-                lastname: resp.data.lastName,
+                firstName: resp.data.firstName,
+                lastName: resp.data.lastName,
                 email: resp.data.email
             })
         })
@@ -45,8 +45,8 @@ const UserProfile = (props) => {
                     type='text'
                     // placeholder='First Name'
                     name='firstname'
-                    value={info.firstName || ''}
-                    onChange={e => {handleChange(e)}}
+                    value={info.firstName}
+                    onChange={handleChange}
                     />
             </label>
             <label>
@@ -54,8 +54,8 @@ const UserProfile = (props) => {
                     type='text'
                     // placeholder='Last Name'
                     name='lastname'
-                    value={info.lastName || ''}
-                    onChange={e => {handleChange(e)}}
+                    value={info.lastName}
+                    onChange={handleChange}
                     />
             </label>
             <label>
@@ -63,8 +63,8 @@ const UserProfile = (props) => {
                     type='email'
                     // placeholder='Email'
                     name='email'
-                    value={info.email || ''}
-                    onChange={e => {handleChange(e)}}
+                    value={info.email}
+                    onChange={handleChange}
                     />
             </label>
             <label>
@@ -72,8 +72,8 @@ const UserProfile = (props) => {
                     type='password'
                     name='password'
                     placeholder='Password'
-                    value={info.password || ''}
-                    onChange={e => {handleChange(e)}}
+                    value={info.password}
+                    onChange={handleChange}
                     />
             </label>
             <button type='submit'>Submit</button>
