@@ -13,8 +13,12 @@ import {
 const initialState = {
   songList: [],
   spotifyList: [],
-  userList: [],
-  userEmail: '',
+  userList: [{
+    firstName:'',
+    lastName:'',
+    email:'',
+    password:''
+  }],
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -45,6 +49,18 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         userList: action.payload
+      }
+    case DELETE_USER:
+      return {
+        ...state, userList: state.userList.filter(user => user.id = !action.payload.id)
+      }
+    case EDIT_USER:
+      return {
+        // ...state, userList: {
+        //   firstName: action.payload.firstName,
+        //   lastName: action.payload.lastName,
+        //   email: action.payload.email
+        // }
       }
     default:
       return state

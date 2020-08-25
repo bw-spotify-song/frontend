@@ -13,9 +13,11 @@ const registerFormSchema = yup.object().shape({
         .required("Please provide a last name."),
     email: yup.string()
         .required("Please provide an email name."),
+
     // terms: yup.boolean()
     //     .required("Terms must be checked.")
     //     .oneOf([true], "You must accept the terms and conditions")
+
   });
 
   export default registerFormSchema;
