@@ -16,8 +16,8 @@ const initialState = {
   userID: '',
   spotifyList: [],
   userList: [{
-    firstname:'',
-    lastname:'',
+    firstName:'',
+    lastName:'',
     email:'',
     password:''
   }],
@@ -64,8 +64,8 @@ export const appReducer = (state = initialState, action) => {
     case EDIT_USER:
       return {
         ...state, userList: {
-          firstname: action.payload.firstname,
-          lastname: action.payload.lastname,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
           email: action.payload.email
         }
       }

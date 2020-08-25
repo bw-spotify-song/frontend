@@ -37,7 +37,7 @@ function App() {
             <Route path="/song/:id" component={Song} />
 
             <Route path='/admin' component={Admin} />
-            <Route path='/user/2/:id' component={UserProfile} />
+            <Route path='/user/:id' component={UserProfile} />
             {/*------------an example of spotify API-------------*/}
             <Route path="/example" component={Example} />
           </Switch>

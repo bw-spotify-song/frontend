@@ -1,3 +1,4 @@
+// import { useParams } from  'react-router';
 const { axiosWithAuth, axiosWithSpotify, getToken } = require("../../utils/axiosWithAuth");
 
 /*----------------song list-----------------*/
@@ -67,21 +68,24 @@ export const fetchUserList = () => (dispatch) => {
             dispatch({ type: FETCH_USERLIST, payload: res.data })
         })
 }
-
-export const deleteUser = () => (dispatch) => {
+// const user = useParams().id
+export const deleteUser = (id) => (dispatch) => {
+    console.log(id)
     axiosWithAuth()
-        .delete('users/3')
+    
+        .delete(`users/${id}`)
         .then(res => {
             dispatch({ type: DELETE_USER, payload: res.data})
-            window.location.reload(true)
+            
         })
         .catch(err => {
             console.log(err)
         })
+        window.location.reload(true)
 }
-export const editUser = (info) => (dispatch) => {
+export const editUser = (id, info) => (dispatch) => {
     axiosWithAuth()
-    .put('users/3', info)
+    .put(`users/${id}`, info)
     .then(res => {
         dispatch({ type: EDIT_USER, payload: res.data})
         window.location.reload(true)
