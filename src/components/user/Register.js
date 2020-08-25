@@ -59,26 +59,27 @@ const Register = () => {
 
     // validation handler
 
-    const validateChange = (e) => {
-        e.persist();
-        yup
-          .reach(registerFormSchema, e.target.name)
-          .validate(e.target.value)
-          .then((valid) =>{ 
-            setErrors({
-              ...errors,
-              [e.target.name]: ""
-            })
-            }
-          )
-          .catch((error) => {
-            setErrors({
-              ...errors,
-              [e.target.name]: error.errors[0]
-            })
-        }
-          );
-      };
+    const validateChange = ([name, value]) => {
+      // e.persist();
+      yup
+        .reach(registerFormSchema, name)
+        .validate(value)
+        .then((valid) =>{ 
+          setErrors({
+            ...errors,
+            [name]: ""
+          })
+          }
+        )
+        .catch((error) => {
+          console.log(error);
+          setErrors({
+            ...errors,
+            [name]: error.errors[0]
+          })
+      }
+        );
+    };
 
 
     // form handlers
@@ -87,9 +88,15 @@ const Register = () => {
     ///// input change
 
     const inputChange = (e) => {
+        
+        // if (e.target.type === "checkbox" && e.target.checked){
+        //   console.log()
+        // }
+  
         const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        console.log(value);
         setRegisterState({...registerState, [e.target.name]: value});
-        validateChange(e);
+        validateChange([e.target.name, value]);
       };    
 
      ///// submit handler
@@ -104,9 +111,11 @@ const Register = () => {
         registerFormSchema.isValid(registerState)
           .then(valid => {
             setSubmitDisabled(!valid);
+            // console.log(valid)
           })
       }, [registerState]);
 
+      
 
     return (
         <div className = 'formContainer'>
