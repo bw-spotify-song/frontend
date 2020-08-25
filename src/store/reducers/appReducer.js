@@ -1,7 +1,6 @@
 
 import {
   FETCH_SONGLIST,
-  FETCH_SPOTIFYSONG,
   FETCH_SPOTIFYLIST,
   POST_SONG,
   FETCH_USERID,
@@ -21,6 +20,7 @@ const initialState = {
 
 export const appReducer = (state = initialState, action) => {
   switch (action.type) {
+    /*-----------------song List-------------------*/
     case FETCH_SONGLIST:
       return {
         ...state,
@@ -46,7 +46,7 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         spotifyList: action.payload
       }
-    
+    /*-----------------user Admin---------------------*/
     case FETCH_USERLIST:
       return {
         ...state,

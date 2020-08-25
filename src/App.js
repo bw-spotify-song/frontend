@@ -33,8 +33,6 @@ function App() {
 
             <Route path="/song/:id" component={Song} />
 
-            <Route path='/song/add' component={SongAdd} />
-
             <Route path='/admin' component={Admin} />
 
             {/*------------an example of spotify API-------------*/}
