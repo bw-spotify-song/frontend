@@ -1,66 +1,36 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from "styled-components"
-
-const StyledHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-
-  background: linear-gradient(
-    0deg,
-    rgba(73, 145, 85, 1) 34%,
-    rgba(113, 172, 88, 0.9962359943977591) 100%
-  );
-  margin: 0;
-
-  h1 {
-    padding: 1.5rem;
-  }
-
-  .header--home {
-    text-decoration: none;
-    padding: 0.5rem;
-    color: white;
-    border: 1px solid;
-    border-radius: 10px;
-    margin-right: 1rem;
-  }
-
-  .header--login {
-    text-decoration: none;
-    padding: 0.5rem;
-    color: white;
-    border: 1px solid;
-    border-radius: 10px;
-    margin-right: 1rem;
-  }
-
-  .header--register {
-    text-decoration: none;
-    padding: 0.5rem;
-    color: white;
-    border: 1px solid;
-    border-radius: 10px;
-    margin-right: 1rem;
-  }
+import {Typography, Box, Button} from '@material-ui/core'
 
 
-`
 
 const Header = () => {
     return (
-      <StyledHeader>
-        <h1>Spotify Song Suggestor</h1>
-        <div>
-        <Link className='header--home' to="/">Home</Link>
-        <Link className='header--login' to="/user/login">Login</Link>
-        <Link className='header--register' to="/user/form">Register</Link>
-        <Link className='header--home' to="/admin">Admin</Link>
-        </div>
-
-      </StyledHeader>
+      <Box align="center" py={2} bgcolor='background.default'>
+        <Typography variant="h3">Spotify Song Suggestor</Typography>
+        <Box width="50%" my={2} display='flex' justifyContent="space-between">
+          <Link to="/">
+            <Button variant="contained" color="primary">
+              Home
+            </Button>
+          </Link>
+          <Link className="header--login" to="/user/login">
+            <Button variant="contained" color="primary">
+              Login
+            </Button>
+          </Link>
+          <Link className="header--register" to="/user/form">
+            <Button variant="contained" color="primary">
+              Register
+            </Button>
+          </Link>
+          <Link className="header--home" to="/admin">
+            <Button variant="contained" color="primary">
+              Admin
+            </Button>
+          </Link>
+        </Box>
+      </Box>
     )
 }
 

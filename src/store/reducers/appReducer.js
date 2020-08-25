@@ -3,7 +3,6 @@ import {
   FETCH_SONGLIST,
   FETCH_SPOTIFYLIST,
   POST_SONG,
-  FETCH_USERID,
   DELETE_SONG,
 
   FETCH_USERLIST,
@@ -13,7 +12,6 @@ import {
 
 const initialState = {
   songList: [],
-  userID: '',
   spotifyList: [],
   userList: [{
     firstName:'',
@@ -40,11 +38,6 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         songList: state.songList.filter(item => item.id !== action.payload)
-      }
-    case FETCH_USERID:
-      return {
-        ...state,
-        userID: action.payload
       }
     case FETCH_SPOTIFYLIST:
       return {
