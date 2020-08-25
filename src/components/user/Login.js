@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from "react";
 import Input from "./Input";
 import * as yup from "yup";
-import axios from "axios";
+// import axios from "axios";
 import loginFormSchema from './validation/loginValidation'
 
 const Login = () => {
@@ -86,7 +86,7 @@ const Login = () => {
                 name="username"
                 onChange={inputChange}
                 value={loginState.username}
-                label="username"
+                label="Username"
                 errors={errors}
             />
             <Input
@@ -94,7 +94,7 @@ const Login = () => {
                 name="password"
                 onChange={inputChange}
                 value={loginState.password}
-                label="password"
+                label="Password"
                 errors={errors}
             />
             <button disabled={submitDisabled}>Submit</button>

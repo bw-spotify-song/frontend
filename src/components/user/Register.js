@@ -37,6 +37,27 @@ const Register = () => {
 
     // validation handler
 
+    const validateChange = (e) => {
+        e.persist();
+        yup
+          .reach(registerFormSchema, e.target.name)
+          .validate(e.target.value)
+          .then((valid) =>{ 
+            setErrors({
+              ...errors,
+              [e.target.name]: ""
+            })
+            }
+          )
+          .catch((error) => {
+            setErrors({
+              ...errors,
+              [e.target.name]: error.errors[0]
+            })
+        }
+          );
+      };
+
 
     // form handlers
 
@@ -47,7 +68,7 @@ const Register = () => {
         //ternary operator to determine the form value
         const value = e.target.value;
         setRegisterState({...registerState, [e.target.name]: value});
-        // validateChange(e);
+        validateChange(e);
       };    
 
      ///// submit handler
@@ -56,8 +77,18 @@ const Register = () => {
         return console.log(`submit pushed. form values: ${registerState}`);
     }  
 
+    // side effects
+
+    useEffect(() => {
+        registerFormSchema.isValid(registerState)
+          .then(valid => {
+            setSubmitDisabled(!valid);
+          })
+      }, [registerState]);
+
+
     return (
-        <div>
+        <div className = 'formContainer'>
             <h3>This is our registration form.</h3>
             <form onSubmit={dummySubmitHandler}>
                 <Input
@@ -65,7 +96,7 @@ const Register = () => {
                 name="username"
                 onChange={inputChange}
                 value={registerState.username}
-                label="username"
+                label="Username"
                 errors={errors}
             />
             <Input
@@ -73,7 +104,7 @@ const Register = () => {
                 name="password"
                 onChange={inputChange}
                 value={registerState.password}
-                label="password"
+                label="Password"
                 errors={errors}
             />
             <Input
@@ -81,7 +112,7 @@ const Register = () => {
                 name="firstName"
                 onChange={inputChange}
                 value={registerState.firstName}
-                label="firstName"
+                label="First Name"
                 errors={errors}
             />
             <Input
@@ -89,7 +120,7 @@ const Register = () => {
                 name="lastName"
                 onChange={inputChange}
                 value={registerState.lastName}
-                label="lastName"
+                label="Last Name"
                 errors={errors}
             />
             <Input
@@ -97,7 +128,7 @@ const Register = () => {
                 name="email"
                 onChange={inputChange}
                 value={registerState.email}
-                label="email"
+                label="Email"
                 errors={errors}
             />
             <Input
@@ -105,7 +136,7 @@ const Register = () => {
                 name="terms"
                 onChange={inputChange}
                 value={registerState.terms}
-                label="checkbox"
+                label="Terms"
                 errors={errors}
             />
             <button disabled={submitDisabled}>Submit</button>
