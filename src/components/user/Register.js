@@ -3,6 +3,28 @@ import {useState, useEffect} from "react";
 import Input from "./Input";
 import * as yup from "yup";
 import registerFormSchema from './validation/registerValidation'
+import styled from "styled-components"
+
+
+    // styles
+
+    const StyledForm = styled.div`
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+
+    Input {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    }
+
+    `
 
 
 const Register = () => {
@@ -24,7 +46,7 @@ const Register = () => {
         firstName: "",
         lastName: "",
         email: "",
-        terms: false,
+        terms: "",
     };
 
     const initialSubmitDisabled = true;
@@ -65,8 +87,7 @@ const Register = () => {
     ///// input change
 
     const inputChange = (e) => {
-        //ternary operator to determine the form value
-        const value = e.target.value;
+        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
         setRegisterState({...registerState, [e.target.name]: value});
         validateChange(e);
       };    
@@ -89,58 +110,60 @@ const Register = () => {
 
     return (
         <div className = 'formContainer'>
-            <h3>This is our registration form.</h3>
-            <form onSubmit={dummySubmitHandler}>
+            <StyledForm>
+                {/* <h3>This is our registration form.</h3> */}
+                <form onSubmit={dummySubmitHandler}>
+                    <Input
+                    type="text"
+                    name="username"
+                    onChange={inputChange}
+                    value={registerState.username}
+                    label="Username"
+                    errors={errors}
+                />
                 <Input
-                type="text"
-                name="username"
-                onChange={inputChange}
-                value={registerState.username}
-                label="Username"
-                errors={errors}
-            />
-            <Input
-                type="text"
-                name="password"
-                onChange={inputChange}
-                value={registerState.password}
-                label="Password"
-                errors={errors}
-            />
-            <Input
-                type="text"
-                name="firstName"
-                onChange={inputChange}
-                value={registerState.firstName}
-                label="First Name"
-                errors={errors}
-            />
-            <Input
-                type="text"
-                name="lastName"
-                onChange={inputChange}
-                value={registerState.lastName}
-                label="Last Name"
-                errors={errors}
-            />
-            <Input
-                type="email"
-                name="email"
-                onChange={inputChange}
-                value={registerState.email}
-                label="Email"
-                errors={errors}
-            />
-            <Input
-                type="checkbox"
-                name="terms"
-                onChange={inputChange}
-                value={registerState.terms}
-                label="Terms"
-                errors={errors}
-            />
-            <button disabled={submitDisabled}>Submit</button>
-            </form>
+                    type="text"
+                    name="password"
+                    onChange={inputChange}
+                    value={registerState.password}
+                    label="Password"
+                    errors={errors}
+                />
+                <Input
+                    type="text"
+                    name="firstName"
+                    onChange={inputChange}
+                    value={registerState.firstName}
+                    label="First Name"
+                    errors={errors}
+                />
+                <Input
+                    type="text"
+                    name="lastName"
+                    onChange={inputChange}
+                    value={registerState.lastName}
+                    label="Last Name"
+                    errors={errors}
+                />
+                <Input
+                    type="email"
+                    name="email"
+                    onChange={inputChange}
+                    value={registerState.email}
+                    label="Email"
+                    errors={errors}
+                />
+                <Input
+                    type="checkbox"
+                    name="terms"
+                    onChange={inputChange}
+                    value={registerState.terms}
+                    label="Terms"
+                    errors={errors}
+                />
+                <button disabled={submitDisabled}>Submit</button>
+                </form>
+            </StyledForm>
         </div>
     )
 

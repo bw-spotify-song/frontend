@@ -7,8 +7,15 @@ const registerFormSchema = yup.object().shape({
     password: yup.string()
       .required("Please provide a password.")
       .min(6, "Password must be at least six characters."),
+    firstName: yup.string()
+        .required("Please provide a first name."),
+    lastName: yup.string()
+        .required("Please provide a last name."),
+    email: yup.string()
+        .required("Please provide an email name."),
     terms: yup.boolean()
         .required("Terms must be checked.")
+        .oneOf([true], "You must accept the terms and conditions")
   });
 
   export default registerFormSchema;

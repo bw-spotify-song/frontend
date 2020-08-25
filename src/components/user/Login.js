@@ -4,9 +4,32 @@ import Input from "./Input";
 import * as yup from "yup";
 // import axios from "axios";
 import loginFormSchema from './validation/loginValidation'
+import styled from "styled-components"
+
+// styles
+
+const StyledForm = styled.div`
+
+display: flex;
+flex-flow: column wrap;
+justify-content: center;
+align-items: center;
+vertical-align: middle;
+
+Input {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+`
 
 const Login = () => {
-    // initialize data stuctures
+
+
+    // initialize data stuctures  
 
     const defaultLoginState = {
         username: "",
@@ -55,7 +78,6 @@ const Login = () => {
 
      ///// input change handler
      const inputChange = (e) => {
-        //ternary operator to determine the form value
         const value = e.target.value;
         setLoginState({...loginState, [e.target.name]: value});
         validateChange(e);
@@ -78,8 +100,10 @@ const Login = () => {
 
 
     return (
-        <div>
-            <h3>This is our login form.</h3>
+
+        <div className = 'formContainer'>
+          <StyledForm>
+            {/* <h3>This is our login form.</h3> */}
             <form onSubmit={dummySubmitHandler}>
                 <Input
                 type="text"
@@ -88,18 +112,18 @@ const Login = () => {
                 value={loginState.username}
                 label="Username"
                 errors={errors}
-            />
-            <Input
+             />
+              <Input
                 type="text"
                 name="password"
                 onChange={inputChange}
                 value={loginState.password}
                 label="Password"
                 errors={errors}
-            />
-            <button disabled={submitDisabled}>Submit</button>
+              />
+              <button disabled={submitDisabled}>Submit</button>
             </form>
-
+          </StyledForm>
         </div>
     )
 }
