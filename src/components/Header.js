@@ -6,20 +6,28 @@ import {Typography, Box, Button} from '@material-ui/core'
 
 const Header = () => {
     return (
-      <Box align='center' my={3}>
-        <Typography variant="h1">Spotify Song Suggestor</Typography>
-        <Box width='80%' my={2}>
+      <Box align="center" py={2} bgcolor='background.default'>
+        <Typography variant="h3">Spotify Song Suggestor</Typography>
+        <Box width="50%" my={2} display='flex' justifyContent="space-between">
           <Link to="/">
-            <Button variant="contained" color='primary'>Home</Button>
+            <Button variant="contained" color="primary">
+              Home
+            </Button>
           </Link>
           <Link className="header--login" to="/user/login">
-            <Button variant="contained">Login</Button>
+            <Button variant="contained" color="primary">
+              Login
+            </Button>
           </Link>
           <Link className="header--register" to="/user/form">
-            <Button variant="contained">Register</Button>
+            <Button variant="contained" color="primary">
+              Register
+            </Button>
           </Link>
           <Link className="header--home" to="/admin">
-            <Button variant="contained">Admin</Button>
+            <Button variant="contained" color="primary">
+              Admin
+            </Button>
           </Link>
         </Box>
       </Box>

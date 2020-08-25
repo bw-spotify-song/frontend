@@ -6,7 +6,7 @@ import registerFormSchema from './validation/registerValidation'
 import styled from "styled-components"
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
-
+import { Button, Box, Paper } from "@material-ui/core"
 
     // styles
 
@@ -121,7 +121,13 @@ const Register = () => {
 
 
     return (
-      <div className="formContainer">
+      <Box
+        className="formContainer"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        m={4}
+      >
         <StyledForm>
           {/* <h3>This is our registration form.</h3> */}
           <form onSubmit={dummySubmitHandler}>
@@ -133,40 +139,52 @@ const Register = () => {
                     label="Username"
                     errors={errors}
                 /> */}
-            <Input
-              type="email"
-              name="email"
-              onChange={inputChange}
-              value={registerState.email}
-              label="Email"
-              errors={errors}
-            />
-            <Input
-              type="text"
-              name="password"
-              onChange={inputChange}
-              value={registerState.password}
-              label="Password"
-              errors={errors}
-            />
-            <Input
-              type="text"
-              name="firstName"
-              onChange={inputChange}
-              value={registerState.firstName}
-              label="First Name"
-              errors={errors}
-            />
-            <Input
-              type="text"
-              name="lastName"
-              onChange={inputChange}
-              value={registerState.lastName}
-              label="Last Name"
-              errors={errors}
-            />
 
-            {/* <Input
+            <Paper>
+              <Box
+                display="flex"
+                flexDirection="column"
+                align="center"
+                width="150px"
+                height="250px"
+                justifyContent="space-around"
+                alignItems="center"
+                p={10}
+              >
+                <Input
+                  type="email"
+                  name="email"
+                  onChange={inputChange}
+                  value={registerState.email}
+                  label="Email"
+                  errors={errors}
+                />
+                <Input
+                  type="text"
+                  name="password"
+                  onChange={inputChange}
+                  value={registerState.password}
+                  label="Password"
+                  errors={errors}
+                />
+                <Input
+                  type="text"
+                  name="firstName"
+                  onChange={inputChange}
+                  value={registerState.firstName}
+                  label="First Name"
+                  errors={errors}
+                />
+                <Input
+                  type="text"
+                  name="lastName"
+                  onChange={inputChange}
+                  value={registerState.lastName}
+                  label="Last Name"
+                  errors={errors}
+                />
+
+                {/* <Input
                     type="checkbox"
                     name="terms"
                     onChange={inputChange}
@@ -174,12 +192,20 @@ const Register = () => {
                     label="Terms"
                     errors={errors}
                 /> */}
-            <button disabled={submitDisabled} onClick={dummySubmitHandler}>
-              Submit
-            </button>
+                <Button
+                  disabled={submitDisabled}
+                  onClick={dummySubmitHandler}
+                  color="secondary"
+                  variant="contained"
+                >
+                  {" "}
+                  Submit
+                </Button>
+              </Box>
+            </Paper>
           </form>
         </StyledForm>
-      </div>
+      </Box>
     )
 
     

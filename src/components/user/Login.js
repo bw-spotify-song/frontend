@@ -3,33 +3,32 @@ import { useState, useEffect } from "react"
 import Input from "./Input"
 import * as yup from "yup"
 import loginFormSchema from "./validation/loginValidation"
-import styled from "styled-components"
+//import styled from "styled-components"
 import { axiosWithAuth } from "../../utils/axiosWithAuth"
 import { useHistory } from "react-router-dom"
-
+import { Button, Box, Paper } from "@material-ui/core"
 
 // styles
 
-const StyledForm = styled.div`
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
+// const StyledForm = styled.div`
+//   display: flex;
+//   flex-flow: column wrap;
+//   justify-content: center;
+//   align-items: center;
+//   vertical-align: middle;
 
-  Input {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-  }
-`
+//   Input {
+//     display: flex;
+//     flex-flow: column wrap;
+//     justify-content: center;
+//     align-items: center;
+//     vertical-align: middle;
+//   }
+// `
 
 const Login = () => {
-
   const history = useHistory()
-  
+
   // initialize data stuctures
 
   const defaultLoginState = {
@@ -102,32 +101,54 @@ const Login = () => {
   }, [loginState])
 
   return (
-    <div className="formContainer">
-      <StyledForm>
-        {/* <h3>This is our login form.</h3> */}
-        <form onSubmit={dummySubmitHandler}>
-          <Input
-            type="text"
-            name="email"
-            onChange={inputChange}
-            value={loginState.email}
-            label="Username"
-            errors={errors}
-          />
-          <Input
-            type="text"
-            name="password"
-            onChange={inputChange}
-            value={loginState.password}
-            label="Password"
-            errors={errors}
-          />
-          <button disabled={submitDisabled} onClick={dummySubmitHandler}>
-            Submit
-          </button>
-        </form>
-      </StyledForm>
-    </div>
+    <Box
+      className="formContainer"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      m={4}
+    >
+      {/* <h3>This is our login form.</h3> */}
+      <form onSubmit={dummySubmitHandler}>
+        <Paper>
+          <Box
+            display="flex"
+            flexDirection="column"
+            align="center"
+            width="150px"
+            height="200px"
+            justifyContent="space-around"
+            alignItems="center"
+            p={10}
+          >
+            <Input
+              type="text"
+              name="email"
+              onChange={inputChange}
+              value={loginState.email}
+              label="Username"
+              errors={errors}
+            />
+            <Input
+              type="text"
+              name="password"
+              onChange={inputChange}
+              value={loginState.password}
+              label="Password"
+              errors={errors}
+            />
+            <Button
+              disabled={submitDisabled}
+              onClick={dummySubmitHandler}
+              color="secondary"
+              variant="contained"
+            >
+              Submit
+            </Button>
+          </Box>
+        </Paper>
+      </form>
+    </Box>
   )
 }
 
