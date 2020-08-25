@@ -12,7 +12,9 @@ import styled from 'styled-components';
     justify-content: center;
 
     .albumCard {
-        margin: 1%;
+        margin: .9%;
+        display:flex;
+        flex-direction: column;
     }
 
     `
@@ -46,7 +48,7 @@ import styled from 'styled-components';
             <div className = "albumCard" key={track.id}>
               <img src={track.album.images[1].url} alt="cover"></img>
               <a href = {track.external_urls.spotify}>{track.artists[0].name} - {track.name}</a>
-        </div>
+            </div>
           )
         })}
         </StyledAlbums>
