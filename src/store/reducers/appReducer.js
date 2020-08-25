@@ -1,17 +1,20 @@
 
 import {
   FETCH_SONGLIST,
-  FETCH_USERS,
   FETCH_SPOTIFYSONG,
   FETCH_SPOTIFYLIST,
   POST_SONG,
   FETCH_USERID,
+  FETCH_USERLIST,
+  EDIT_USER,
+  DELETE_USER
 } from "../actions"
 
 const initialState = {
   songList: [],
   userID: '',
-  spotifyList:[],
+  spotifyList: [],
+  userList: [],
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -30,6 +33,16 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         userID: action.payload
+      }
+    case FETCH_SPOTIFYLIST:
+      return {
+        ...state,
+        spotifyList: action.payload
+      }
+    case FETCH_USERLIST:
+      return {
+        ...state,
+        userList: action.payload
       }
     default:
       return state

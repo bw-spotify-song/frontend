@@ -9,7 +9,6 @@ export const axiosWithAuth = () => {
   })
 }
 
-
 const client_id = "956e408b3a2d492183230f72c33ca134"
 const client_secret = "dcd885d7ce4342e59a5d6cb8bf261b45"
 

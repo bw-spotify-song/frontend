@@ -11,6 +11,7 @@ import Register from './components/user/Register';
 import Example from './components/example/example';
 import Footer from './components/Footer';
 import SongAdd from './components/song/SongAdd';
+import Admin from './components/user/Admin';
 
 function App() {
   
@@ -33,6 +34,8 @@ function App() {
             <Route path="/song/:id" component={Song} />
 
             <Route path='/song/add' component={SongAdd} />
+
+            <Route path='/admin' component={Admin} />
 
             {/*------------an example of spotify API-------------*/}
             <Route path="/example" component={Example} />

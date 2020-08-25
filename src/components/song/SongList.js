@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
-import { postSong, fetchSongList, fetchUser } from '../../store/actions'
+import { postSong, fetchSongList, fetchUser, fetchTracks } from '../../store/actions'
 import { useSelector, useDispatch } from 'react-redux'
 
 
 const SongList = () => {
 
     const dispatch = useDispatch()
-
     const songList = useSelector(state => state.songList)
     const userID = useSelector(state => state.userID)
+    const spotifyList = useSelector(state => state.spotifyList)
 
     const [songID, setSongID] = useState({ spotifyID: '' })
 
@@ -20,7 +20,12 @@ const SongList = () => {
     
     useEffect(() => {
         dispatch(fetchSongList(userID))
-    },[userID])
+    }, [userID])
+    
+    useEffect(() => {
+        let spotifyList = songList.map(item => item.spotifyID)
+        dispatch(fetchTracks(spotifyList))
+    },[songList])
     
     useEffect(() => {
         axiosWithAuth().post('/auth/login', {
@@ -45,14 +50,6 @@ const SongList = () => {
 
     return (
         <div>
-            <p>{userID}</p>
-            {
-                songList.map(item => {
-                    return (
-                        <div key={item.id}>{item.spotifyID}</div>
-                    )
-                })
-            }
             <form onSubmit={submitHandler}>
                 <label>
                     Add a song to the list:
@@ -60,6 +57,16 @@ const SongList = () => {
                 </label>
                 <button onClick={submitHandler}>Add</button>
             </form>
+            {
+                spotifyList.map(item => {
+                    return (
+                        <div key={item.id}>
+                            <img src={item.album.images[1].url} alt="cover"></img>
+                        </div>
+                    )
+                })
+            }
+            
         </div>
     )
 }
