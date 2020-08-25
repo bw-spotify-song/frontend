@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import { postSong, fetchSongList, fetchUser, fetchTracks } from '../../store/actions'
 import { useSelector, useDispatch } from 'react-redux'
+import { deleteSong } from '../../store/actions/appActions'
 
 
 const SongList = () => {
@@ -46,6 +47,13 @@ const SongList = () => {
     const submitHandler = event => {
         event.preventDefault()
         dispatch(postSong(userID, songID))
+        setSongID({ spotifyID: ''})
+    }
+
+    const deleteHandler = (id) => {
+        const songListID = songList.filter(item => item.spotifyID === id)[0].id
+        dispatch(deleteSong(userID, songListID))
+        
     }
 
     return (
@@ -61,6 +69,7 @@ const SongList = () => {
                 spotifyList.map(item => {
                     return (
                         <div key={item.id}>
+                            <button onClick={()=>deleteHandler(item.id)}>Delete</button>
                             <img src={item.album.images[1].url} alt="cover"></img>
                         </div>
                     )

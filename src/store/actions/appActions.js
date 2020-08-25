@@ -1,16 +1,19 @@
 const { axiosWithAuth, axiosWithSpotify, getToken } = require("../../utils/axiosWithAuth");
 
+/*----------------song list-----------------*/
 export const FETCH_SONGLIST = "FETCH_SONGLIST"
 export const FETCH_USERID = "FETCH_USERID"
 export const FETCH_SPOTIFYLIST = "FETCH_SPOTIFYLIST"
 export const FETCH_SPOTIFYSONG = "FETCH_SPOTIFYSONG"
 export const POST_SONG = "POST_SONG"
+export const DELETE_SONG = "DELETE_SONG"
 
-
+/*------------------user Admin----------------*/
 export const FETCH_USERLIST = "FETCH_USERLIST"
 export const DELETE_USER = "DELETE_USER"
 export const EDIT_USER = "EDIT_USER"
 
+/*-----------------------song list------------------------*/
 export const fetchSongList = (userID) => (dispatch) => {
  
     axiosWithAuth()
@@ -46,6 +49,16 @@ export const fetchTracks = (spotifyIDs) => (dispatch) => {
                 dispatch({type: FETCH_SPOTIFYLIST, payload:res.data.tracks})
             })
 }
+
+export const deleteSong = (userID, id) => (dispatch) => {
+    axiosWithAuth().delete(`songs/${userID}/${id}`)
+        .then(res => {
+            console.log(res.data.message.split(' '))
+            dispatch({type: DELETE_SONG, payload: Number(res.data.message.split(' ')[3])})
+    })
+}
+
+/*---------------------user Admin-------------------------*/
 
 export const fetchUserList = () => (dispatch) => {
     axiosWithAuth()

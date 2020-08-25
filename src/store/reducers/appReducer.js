@@ -5,6 +5,8 @@ import {
   FETCH_SPOTIFYLIST,
   POST_SONG,
   FETCH_USERID,
+  DELETE_SONG,
+
   FETCH_USERLIST,
   EDIT_USER,
   DELETE_USER
@@ -29,6 +31,11 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         songList: [...state.songList, action.payload]
       }
+    case DELETE_SONG:
+      return {
+        ...state,
+        songList: state.songList.filter(item => item.id !== action.payload)
+      }
     case FETCH_USERID:
       return {
         ...state,
@@ -39,6 +46,7 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         spotifyList: action.payload
       }
+    
     case FETCH_USERLIST:
       return {
         ...state,

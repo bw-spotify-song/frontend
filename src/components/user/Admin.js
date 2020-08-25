@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import { fetchUserList } from '../../store/actions'
 import { useSelector, useDispatch } from 'react-redux'
@@ -27,9 +27,13 @@ const Admin = () => {
         
         <div>
             {
-                userList.map(item => {
+                userList.map(user => {
                     return (
-                        <div key={item.id}>{item.email}</div>
+                        <div key={user.id}>
+                            <p>{user.id}</p>
+                            <h3>{user.firstName}</h3>
+                            <p>{user.email}</p>
+                        </div>
                 )})
         }
             </div>
