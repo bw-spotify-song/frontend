@@ -32,7 +32,8 @@ const UserProfile = (props) => {
             setInfo({
                 firstName: resp.data.firstName,
                 lastName: resp.data.lastName,
-                email: resp.data.email
+                email: resp.data.email,
+                password: resp.data.password
             })
         })
     }, [user])
@@ -40,6 +41,7 @@ const UserProfile = (props) => {
     return (
         <>
         <form onSubmit={handleSubmit}>
+            <h3>All Fields Must Be Completed</h3>
             <label>
                 <input
                     type='text'
