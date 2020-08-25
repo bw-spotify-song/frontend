@@ -13,8 +13,6 @@ import Example from './components/example/example';
 import Footer from './components/Footer'
 // import greyTheme from './components/Theme'
 
-import Footer from './components/Footer';
-import SongAdd from './components/song/SongAdd';
 import Admin from './components/user/Admin';
 
 
