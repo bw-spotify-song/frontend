@@ -9,9 +9,14 @@ import Header from './components/Header';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Example from './components/example/example';
+
+import Footer from './components/Footer'
+// import greyTheme from './components/Theme'
+
 import Footer from './components/Footer';
 import SongAdd from './components/song/SongAdd';
 import Admin from './components/user/Admin';
+
 
 function App() {
   
@@ -24,7 +29,7 @@ function App() {
             {/* ------------- React-1 team ---------------- */}
             <Route exact path="/" component={Home} />
 
-            <Route path="/user/login" component={Login} />
+            <Route path="/user/login" component = {Login}/>
 
             <Route path="/user/form" component={Register} />
 

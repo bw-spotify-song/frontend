@@ -27,6 +27,26 @@ const StyledHeader = styled.div`
     border-radius: 10px;
     margin-right: 1rem;
   }
+
+  .header--login {
+    text-decoration: none;
+    padding: 0.5rem;
+    color: white;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-right: 1rem;
+  }
+
+  .header--register {
+    text-decoration: none;
+    padding: 0.5rem;
+    color: white;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-right: 1rem;
+  }
+
+
 `
 
 const Header = () => {
@@ -35,8 +55,11 @@ const Header = () => {
         <h1>Spotify Song Suggestor</h1>
         <div>
         <Link className='header--home' to="/">Home</Link>
-          <Link className='header--home' to="/admin">Admin</Link>
+        <Link className='header--login' to="/user/login">Login</Link>
+        <Link className='header--register' to="/user/form">Register</Link>
+        <Link className='header--home' to="/admin">Admin</Link>
         </div>
+
       </StyledHeader>
     )
 }
