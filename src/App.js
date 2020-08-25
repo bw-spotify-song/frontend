@@ -9,7 +9,7 @@ import Header from './components/Header';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Example from './components/example/example';
-
+import UserProfile from './components/user/editUser';
 import Footer from './components/Footer'
 // import greyTheme from './components/Theme'
 
@@ -37,7 +37,7 @@ function App() {
             <Route path="/song/:id" component={Song} />
 
             <Route path='/admin' component={Admin} />
-
+            <Route path='/user/:id' component={UserProfile} />
             {/*------------an example of spotify API-------------*/}
             <Route path="/example" component={Example} />
           </Switch>
