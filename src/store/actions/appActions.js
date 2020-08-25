@@ -67,3 +67,26 @@ export const fetchUserList = () => (dispatch) => {
             dispatch({ type: FETCH_USERLIST, payload: res.data })
         })
 }
+
+export const deleteUser = () => (dispatch) => {
+    axiosWithAuth()
+        .delete('users/3')
+        .then(res => {
+            dispatch({ type: DELETE_USER, payload: res.data})
+            window.location.reload(true)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+export const editUser = (info) => (dispatch) => {
+    axiosWithAuth()
+    .put('users/3', info)
+    .then(res => {
+        dispatch({ type: EDIT_USER, payload: res.data})
+        window.location.reload(true)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+}

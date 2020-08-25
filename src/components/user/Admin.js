@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
-import { fetchUserList } from '../../store/actions'
+import { fetchUserList, deleteUser, editUser } from '../../store/actions/appActions'
 import { useSelector, useDispatch } from 'react-redux'
+import {Link} from 'react-router-dom'
 
 
 const Admin = () => {
@@ -21,7 +22,7 @@ const Admin = () => {
 
     useEffect(() => {
         dispatch(fetchUserList())
-    },[])
+    },[dispatch])
 
     return (
         
@@ -33,6 +34,9 @@ const Admin = () => {
                             <p>{user.id}</p>
                             <h3>{user.firstName}</h3>
                             <p>{user.email}</p>
+                            <Link to={`/user/2/${user.id}`}><button onClick={() => dispatch({ type: editUser()})}>Edit User</button></Link>
+                            
+                            <button onClick={() => dispatch(deleteUser())}>Delete User</button>
                         </div>
                 )})
         }
