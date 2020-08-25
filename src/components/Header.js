@@ -33,7 +33,10 @@ const Header = () => {
     return (
       <StyledHeader>
         <h1>Spotify Song Suggestor</h1>
+        <div>
         <Link className='header--home' to="/">Home</Link>
+          <Link className='header--home' to="/admin">Admin</Link>
+        </div>
       </StyledHeader>
     )
 }
