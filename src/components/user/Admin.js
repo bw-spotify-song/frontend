@@ -9,15 +9,15 @@ const Admin = () => {
     const userList = useSelector(state => state.userList)
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        axiosWithAuth().post('/auth/login', {
-            "email": "tester@tester.com",
-            "password": "password"
-        }).then(res => {
-            console.log(res.data)
-            localStorage.setItem("token", res.data.token)
-        })
-    }, [])
+    // useEffect(() => {
+    //     axiosWithAuth().post('/auth/login', {
+    //         "email": "tester@tester.com",
+    //         "password": "password"
+    //     }).then(res => {
+    //         console.log(res.data)
+    //         localStorage.setItem("token", res.data.token)
+    //     })
+    // }, [])
 
     useEffect(() => {
         dispatch(fetchUserList())

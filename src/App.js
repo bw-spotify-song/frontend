@@ -32,7 +32,7 @@ function App() {
             <Route path="/user/form" component={Register} />
 
             {/* ------------- React-2 team ---------------- */}
-            <Route path="/song/list" component={SongList} />
+            <Route path="/song/list/:userID" component={SongList} />
 
             <Route path="/song/:id" component={Song} />
 

@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
-import { postSong, fetchSongList, fetchUser, fetchTracks } from '../../store/actions'
+import { postSong, fetchSongList, fetchTracks } from '../../store/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteSong } from '../../store/actions/appActions'
+import { useParams } from 'react-router-dom'
 
 
 const SongList = () => {
 
     const dispatch = useDispatch()
     const songList = useSelector(state => state.songList)
-    const userID = useSelector(state => state.userID)
     const spotifyList = useSelector(state => state.spotifyList)
-
     const [songID, setSongID] = useState({ spotifyID: '' })
-
-    useEffect(() => {
-        dispatch(fetchUser('tester@tester.com'))
-        console.log(userID)    
-    }, [])
     
+    const { userID }= useParams()
+
     useEffect(() => {
         dispatch(fetchSongList(userID))
     }, [userID])
@@ -27,21 +22,10 @@ const SongList = () => {
         let spotifyList = songList.map(item => item.spotifyID)
         dispatch(fetchTracks(spotifyList))
     },[songList])
-    
-    useEffect(() => {
-        axiosWithAuth().post('/auth/login', {
-            "email": "tester@tester.com",
-            "password": "password"
-        }).then(res => {
-            console.log(res.data)
-            localStorage.setItem("token", res.data.token)
-        })
-    }, [])
 
     const changeHandler = event => {
         const { value, name } = event.target
         setSongID({ ...songID, [name]: value })
-        console.log(songID)
     }
 
     const submitHandler = event => {
@@ -53,7 +37,6 @@ const SongList = () => {
     const deleteHandler = (id) => {
         const songListID = songList.filter(item => item.spotifyID === id)[0].id
         dispatch(deleteSong(userID, songListID))
-        
     }
 
     return (
