@@ -23,9 +23,7 @@ function App() {
             {/* ------------- React-1 team ---------------- */}
             <Route exact path="/" component={Home} />
 
-            <Route path="/user/login">
-                <Login/>
-            </Route>
+            <Route path="/user/login" component = {Login}/>
 
             <Route path="/user/form" component={Register} />
 

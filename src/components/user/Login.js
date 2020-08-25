@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import Input from "./Input";
 import * as yup from "yup";
 import axios from "axios";
-import loginFormSchema from './Validation'
+import loginFormSchema from './validation/loginValidation'
 
 const Login = () => {
     // initialize data stuctures
@@ -28,12 +28,10 @@ const Login = () => {
     const [errors, setErrors] = useState(defaultErrorsState);
     const [submitDisabled, setSubmitDisabled] = useState(initialSubmitDisabled);
 
-     // create authentication handlers/yup 
+     // create validation handlers/yup 
 
      const validateChange = (e) => {
-        //this allows react to keep the event object to play nice with async op
         e.persist();
-        //reach allows us to check a specific value of the schema
         yup
           .reach(loginFormSchema, e.target.name)
           .validate(e.target.value)
@@ -52,24 +50,7 @@ const Login = () => {
         }
           );
       };
-
-     ///// waiting for JSX + form Handlers
-
-     // side effects
-
-     
-
-    //  useEffect(() => {
-    //     // formSchema.Valid(formState).then(valid => setButtonDisabled(!valid));
-    //     if ((loginFormSchema)) {
-    //       setSubmitDisabled(true);
-    //     }
-    //     else {
-    //         setSubmitDisabled(false);
-    //     }
-    //     // console.log(validateChange())
-    //   }, [loginFormSchema]);
-
+    
      // form handlers
 
      ///// input change handler
@@ -83,12 +64,10 @@ const Login = () => {
       ///// submit handler
 
       const dummySubmitHandler = (e) => {
-          return console.log('submit button pushed');
+          return console.log(`submit pushed. form values: ${loginState}`);
       }
 
-      ///// determine submit disabled handler
-
-      //// side effects
+      // side effects
 
       useEffect(() => {
         loginFormSchema.isValid(loginState)
@@ -100,7 +79,7 @@ const Login = () => {
 
     return (
         <div>
-            <p>This is our login.</p>
+            <h3>This is our login form.</h3>
             <form onSubmit={dummySubmitHandler}>
                 <Input
                 type="text"
