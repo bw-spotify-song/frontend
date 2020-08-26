@@ -61,6 +61,7 @@ export const appReducer = (state = initialState, action) => {
         //   lastName: action.payload.lastName,
         //   email: action.payload.email
         // }
+        ...state
       }
     default:
       return state
