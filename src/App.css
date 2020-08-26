@@ -30,6 +30,10 @@
         background-size: cover;
 }
 
+.hero--button {
+  color: white;
+}
+
 .app--content {
     flex-grow: 1;
 }
