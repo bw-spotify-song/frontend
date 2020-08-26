@@ -1,27 +1,20 @@
 import React from 'react'
-import styled from "styled-components"
+import GitHubIcon from "@material-ui/icons/GitHub"
+import { Box } from '@material-ui/core'
 
-const StyledFooter = styled.div`
-  display: grid;
-  place-items: center;
-  color:white;
-  background: linear-gradient(
-    180deg,
-    rgba(73, 145, 85, 1) 59%,
-    rgba(90, 144, 67, 0.9962359943977591) 100%
-  );
 
-  .app-footer-title {
-    padding: 3rem;
-  }
-`
 
 const Footer = () => {
-    return (
-        <StyledFooter className='app-footer'>
-            <h3 className='app-footer-title'>Made by Lambda</h3>
-        </StyledFooter>
-    )
+  return (
+    <Box className="footer" display="flex" justifyContent="center" flexDirection='column' alignItems='center'>
+      <Box p={2}>
+        <h3 className="app-footer-title">Made by Lambda</h3>
+      </Box>
+      <Box pb={2}>
+        <GitHubIcon />
+      </Box>
+    </Box>
+  )
 }
 
 export default Footer
