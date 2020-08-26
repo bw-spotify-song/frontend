@@ -66,7 +66,9 @@ export const fetchUserList = () => (dispatch) => {
         .get('users')
         .then(res => {
             dispatch({ type: FETCH_USERLIST, payload: res.data })
+            
         })
+        
 }
 // const user = useParams().id
 export const deleteUser = (id) => (dispatch) => {
