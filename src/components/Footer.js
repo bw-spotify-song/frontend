@@ -6,12 +6,20 @@ import { Box } from '@material-ui/core'
 
 const Footer = () => {
   return (
-    <Box className="footer" display="flex" justifyContent="center" flexDirection='column' alignItems='center'>
+    <Box
+      className="footer"
+      display="flex"
+      justifyContent="center"
+      flexDirection="column"
+      alignItems="center"
+    >
       <Box p={2}>
         <h3 className="app-footer-title">Made by Lambda</h3>
       </Box>
       <Box pb={2}>
-        <GitHubIcon />
+        <a href="https://github.com/bw-spotify-song/frontend" target="_blank">
+          <GitHubIcon className="header--icon" />
+        </a>
       </Box>
     </Box>
   )

@@ -7,14 +7,21 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount"
 
 const Header = () => {
     return (
-      <Box display="flex" py={2} justifyContent='space-between' alignItems='center' className='header'>
-        <Typography variant="h3">Spotify Song Suggestor</Typography>
+      <Box
+        display="flex"
+        py={2}
+        px={2}
+        justifyContent="space-between"
+        alignItems="center"
+        className="header"
+      >
+        <Typography variant="h4">Spotify Song Suggestor</Typography>
         <Box>
           <Link to="/">
-            <HomeIcon />
+            <HomeIcon className="header--icon" />
           </Link>
           <Link className="header--home" to="/admin">
-            <SupervisorAccountIcon />
+            <SupervisorAccountIcon className="header--icon" />
           </Link>
         </Box>
       </Box>
