@@ -13,8 +13,6 @@ import Example from './components/example/example';
 import UserProfile from './components/user/editUser';
 import Footer from './components/Footer'
 
-// import greyTheme from './components/Theme'
-
 import Admin from "./components/user/Admin"
 import { theme } from "../src/components/MuiTheme"
 import { ThemeProvider } from "@material-ui/core/styles"
