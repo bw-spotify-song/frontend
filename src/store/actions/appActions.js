@@ -86,9 +86,12 @@ export const editUser = (id, info) => (dispatch) => {
     .put(`users/${id}`, info)
     .then(res => {
         dispatch({ type: EDIT_USER, payload: res.data})
-        window.location.reload(true)
+        // window.location.reload(true)
+        // window.history.push('/admin')
     })
     .catch(error => {
         console.log(error.message)
     })
+    
+    // window.location.reload(true)
 }

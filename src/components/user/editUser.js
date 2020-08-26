@@ -23,7 +23,7 @@ const UserProfile = (props) => {
         e.preventDefault()
         props.editUser(user, info)
         setInfo(initialState)
-        props.history.push('/admin')
+         props.history.push('/admin')
         
     }
     useEffect(() => {
@@ -37,8 +37,9 @@ const UserProfile = (props) => {
                 password: resp.data.password
             })
         })
-    }, [])
-
+        
+    }, [user])
+    
     return (
         <>
         <form onSubmit={handleSubmit}>
