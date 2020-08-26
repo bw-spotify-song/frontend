@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
+//import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import { fetchUserList, deleteUser, editUser } from '../../store/actions/appActions'
 import { useSelector, useDispatch, connect } from 'react-redux'
 import {Link} from 'react-router-dom'
+import { Box } from '@material-ui/core'
 
 
 const Admin = (props) => {
@@ -10,15 +11,15 @@ const Admin = (props) => {
     const userList = useSelector(state => state.userList)
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        axiosWithAuth().post('/auth/login', {
-            "email": "tester@tester.com",
-            "password": "password"
-        }).then(res => {
-            console.log(res.data)
-            localStorage.setItem("token", res.data.token)
-        })
-    }, [])
+    // useEffect(() => {
+    //     axiosWithAuth().post('/auth/login', {
+    //         "email": "tester@tester.com",
+    //         "password": "password"
+    //     }).then(res => {
+    //         console.log(res.data)
+    //         localStorage.setItem("token", res.data.token)
+    //     })
+    // }, [])
 
     useEffect(() => {
         dispatch(fetchUserList())
@@ -27,7 +28,7 @@ const Admin = (props) => {
 
     return (
         
-        <div>
+        <Box align='center' m={2}>
             {
                 userList.map(user => {
                     return (
@@ -43,7 +44,7 @@ const Admin = (props) => {
                         </div>
                 )})
         }
-            </div>
+            </Box>
             
     )
 }
