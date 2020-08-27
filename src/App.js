@@ -1,7 +1,7 @@
 import React from "react"
 import "./App.css"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-//import PrivateRoute from './components/PrivateRoute'
+import PrivateRoute from "./components/PrivateRoute"
 
 import SongList from "./components/song/SongList"
 import Song from "./components/song/Song"
@@ -35,12 +35,12 @@ function App() {
               <Route path="/user/form" component={Register} />
 
               {/* ------------- React-2 team ---------------- */}
-              <Route path="/song/list/:userID" component={SongList} />
+              <PrivateRoute path="/song/list/:userID" component={SongList} />
 
               <Route path="/song/:userID/:songID" component={Song} />
 
-              <Route path="/admin" component={Admin} />
-              <Route path="/user/:id" component={UserProfile} />
+              <PrivateRoute path="/admin" component={Admin} />
+              <PrivateRoute path="/user/:id" component={UserProfile} />
               {/*------------an example of spotify API-------------*/}
               <Route path="/example" component={Example} />
             </Switch>
