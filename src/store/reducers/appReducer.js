@@ -1,7 +1,9 @@
 import {
   FETCH_SONGLIST,
   FETCH_SPOTIFYLIST,
+  FETCH_SPOTIFYLIST2,
   FETCH_SPOTIFYSONG,
+  FETCH_SUGGESTION,
   POST_SONG,
   DELETE_SONG,
   FETCH_USERLIST,
@@ -12,7 +14,26 @@ import {
 const initialState = {
   songList: [],
   spotifyList: [],
-  spotifySong: { id: "" },
+  spotifyList2: [],
+  spotifySong: {
+    id: "",
+    album: {
+      name: "",
+      images: [
+        {
+          url: "",
+        },
+      ],
+      release_date: "",
+      external_urls: {
+        spotify: "",
+      },
+    },
+    artists: [{ name: "" }],
+    name: "",
+  },
+  suggestions: [],
+
   userList: [
     {
       firstName: "",
@@ -46,10 +67,20 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         spotifyList: action.payload,
       }
+    case FETCH_SPOTIFYLIST2:
+      return {
+        ...state,
+        spotifyList2: action.payload,
+      }
     case FETCH_SPOTIFYSONG:
       return {
         ...state,
         spotifySong: action.payload,
+      }
+    case FETCH_SUGGESTION:
+      return {
+        ...state,
+        suggestions: action.payload,
       }
     /*-----------------user Admin---------------------*/
     case FETCH_USERLIST:

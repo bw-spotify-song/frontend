@@ -86,7 +86,7 @@ const Login = () => {
     axiosWithAuth()
       .post("/auth/login", loginState)
       .then((res) => {
-        console.log(res.data)
+        //console.log(res.data)
         localStorage.setItem("token", res.data.token)
         history.push(`/song/list/${res.data.userID}`)
       })

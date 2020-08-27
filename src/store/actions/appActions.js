@@ -1,3 +1,5 @@
+import Axios from "axios"
+
 // import { useParams } from  'react-router';
 const {
   axiosWithAuth,
@@ -8,9 +10,11 @@ const {
 /*----------------song list-----------------*/
 export const FETCH_SONGLIST = "FETCH_SONGLIST"
 export const FETCH_SPOTIFYLIST = "FETCH_SPOTIFYLIST"
+export const FETCH_SPOTIFYLIST2 = "FETCH_SPOTIFYLIST2"
 export const FETCH_SPOTIFYSONG = "FETCH_SPOTIFYSONG"
 export const POST_SONG = "POST_SONG"
 export const DELETE_SONG = "DELETE_SONG"
+export const FETCH_SUGGESTION = "FETCH_SUGGESTION"
 
 /*------------------user Admin----------------*/
 export const FETCH_USERLIST = "FETCH_USERLIST"
@@ -46,6 +50,16 @@ export const fetchTracks = (spotifyIDs) => (dispatch) => {
     })
 }
 
+export const fetchTracks2 = (spotifyIDs) => (dispatch) => {
+  getToken()
+  axiosWithSpotify()
+    .get(`https://api.spotify.com/v1/tracks/?ids=${spotifyIDs.join(",")}`)
+    .then((res) => {
+      console.log(res.data.tracks)
+      dispatch({ type: FETCH_SPOTIFYLIST2, payload: res.data.tracks })
+    })
+}
+
 export const fetchTrack = (spotifyID) => (dispatch) => {
   axiosWithSpotify()
     .get(`https://api.spotify.com/v1/tracks/${spotifyID}`)
@@ -64,6 +78,18 @@ export const deleteSong = (userID, id) => (dispatch) => {
         payload: Number(res.data.message.split(" ")[3]),
       })
     })
+}
+
+export const fetchSuggestion = (id) => (dispatch) => {
+  Axios.get(
+    `https://song-predictor-spotify.herokuapp.com/predict/3eJYgrNmakkgPr4ksZ0mtE`
+  ).then((res) => {
+    console.log(res.data["Suggested track IDs"])
+    dispatch({
+      type: FETCH_SUGGESTION,
+      payload: res.data["Suggested track IDs"],
+    })
+  })
 }
 
 /*---------------------user Admin-------------------------*/

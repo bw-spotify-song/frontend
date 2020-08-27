@@ -1,33 +1,51 @@
 .app--container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: linear-gradient(130deg, rgba(248,249,250,1) 25%, rgba(222,226,230,1) 78%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(
+    130deg,
+    rgba(248, 249, 250, 1) 25%,
+    rgba(222, 226, 230, 1) 78%
+  );
 }
 
 .header {
-    color: #f8f9fa;
-    text-transform: uppercase;
-    background: linear-gradient(
+  color: #f8f9fa;
+  text-transform: uppercase;
+
+  background: linear-gradient(
     130deg,
     rgba(73, 145, 85, 1) 59%,
     rgba(90, 144, 67, 0.884) 100%
   );
+  background: #1a1a1a;
+}
+
+.header--icon {
+  width: 3rem;
+  filter: invert(50%) sepia(95%) saturate(374%) hue-rotate(88deg)
+    brightness(94%) contrast(98%);
 }
 
 .footer {
-    color: #f8f9fa;
-    background: linear-gradient(
+  color: #f8f9fa;
+  background: linear-gradient(
     100deg,
     rgba(73, 145, 85, 1) 59%,
     rgba(90, 144, 67, 0.884) 100%
   );
+  background: #1a1a1a;
 }
 
 .hero {
-        background-image:linear-gradient(130deg, rgba(248, 249, 250, 0.781) 25%, rgba(222, 226, 230, 0.836) 78%), url("./image/bkimage.jpg");
-        background-size: cover;
+  background-image: linear-gradient(
+      130deg,
+      rgba(248, 249, 250, 0.781) 25%,
+      rgba(222, 226, 230, 0.836) 78%
+    ),
+    url("./image/bkimage.jpg");
+  background-size: cover;
 }
 
 .hero--button {
@@ -35,15 +53,15 @@
 }
 
 .app--content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 a {
-    text-decoration: none;
-    color: green;
+  text-decoration: none;
+  color: green;
 }
 
-.header--icon{
-  color: #f8F9Fa;
+.header--icon {
+  color: #f8f9fa;
   padding: 0 1rem;
 }

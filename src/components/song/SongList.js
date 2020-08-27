@@ -11,7 +11,6 @@ import {
   CardMedia,
   CardContent,
   Typography,
-  CardActionArea,
 } from "@material-ui/core"
 
 const SongList = () => {
