@@ -95,11 +95,14 @@ export const fetchSuggestion = (id) => (dispatch) => {
 /*---------------------user Admin-------------------------*/
 
 export const fetchUserList = () => (dispatch) => {
-  axiosWithAuth()
-    .get("users")
-    .then((res) => {
-      dispatch({ type: FETCH_USERLIST, payload: res.data })
-    })
+
+    axiosWithAuth()
+        .get('users')
+        .then(res => {
+            dispatch({ type: FETCH_USERLIST, payload: res.data })
+            
+        })
+        
 }
 // const user = useParams().id
 export const deleteUser = (id) => (dispatch) => {
@@ -118,11 +121,14 @@ export const deleteUser = (id) => (dispatch) => {
 export const editUser = (id, info) => (dispatch) => {
   axiosWithAuth()
     .put(`users/${id}`, info)
-    .then((res) => {
-      dispatch({ type: EDIT_USER, payload: res.data })
-      window.location.reload(true)
+    .then(res => {
+        dispatch({ type: EDIT_USER, payload: res.data})
+        // window.location.reload(true)
+        // window.history.push('/admin')
     })
     .catch((error) => {
       console.log(error.message)
     })
+    
+    // window.location.reload(true)
 }

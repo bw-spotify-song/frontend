@@ -23,7 +23,8 @@ const UserProfile = (props) => {
         e.preventDefault()
         props.editUser(user, info)
         setInfo(initialState)
-        props.history.push('/admin')
+         props.history.push('/admin')
+        
     }
     useEffect(() => {
         axiosWithAuth().get(`/users/${user}`)
@@ -36,8 +37,9 @@ const UserProfile = (props) => {
                 password: resp.data.password
             })
         })
+        
     }, [user])
-
+    
     return (
         <>
         <form onSubmit={handleSubmit}>
@@ -73,7 +75,7 @@ const UserProfile = (props) => {
                 <input
                     type='password'
                     name='password'
-                    placeholder='Password'
+                    // placeholder='Password'
                     value={info.password}
                     onChange={handleChange}
                     />

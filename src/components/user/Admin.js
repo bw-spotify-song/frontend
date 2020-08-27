@@ -23,6 +23,7 @@ const Admin = (props) => {
 
     useEffect(() => {
         dispatch(fetchUserList())
+        
     },[dispatch])
 
     return (
