@@ -134,7 +134,7 @@ const Login = () => {
               errors={errors}
             />
             <Input
-              type="text"
+              type="password"
               name="password"
               onChange={inputChange}
               value={loginState.password}
