@@ -12,7 +12,6 @@ import {
 import { useParams, useHistory } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite"
-import { Link } from "react-router-dom"
 import {
   fetchSuggestion,
   fetchTrack,
@@ -30,7 +29,7 @@ const Song = () => {
 
   useEffect(() => {
     dispatch(fetchTrack(songID))
-  }, [songID])
+  }, [dispatch, songID])
 
   const getSuggestion = (id) => {
     dispatch(fetchSuggestion(id))
@@ -39,7 +38,7 @@ const Song = () => {
   useEffect(() => {
     //console.log(suggestions)
     dispatch(fetchTracks2(suggestions))
-  }, [suggestions])
+  }, [dispatch, suggestions])
 
   const saveHandler = (id) => {
     dispatch(postSong(userID, { spotifyID: id }))
