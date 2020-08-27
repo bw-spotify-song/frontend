@@ -35,7 +35,7 @@ export const postSong = (userID, spotifyID) => (dispatch) => {
   axiosWithAuth()
     .post(`songs/${userID}`, spotifyID)
     .then((res) => {
-      console.log(res)
+      //console.log(res)
       dispatch({ type: POST_SONG, payload: res.data })
     })
     .catch((err) => console.log(err))
@@ -55,7 +55,7 @@ export const fetchTracks2 = (spotifyIDs) => (dispatch) => {
   axiosWithSpotify()
     .get(`https://api.spotify.com/v1/tracks/?ids=${spotifyIDs.join(",")}`)
     .then((res) => {
-      console.log(res.data.tracks)
+      //console.log(res.data.tracks)
       dispatch({ type: FETCH_SPOTIFYLIST2, payload: res.data.tracks })
     })
 }
@@ -72,7 +72,7 @@ export const deleteSong = (userID, id) => (dispatch) => {
   axiosWithAuth()
     .delete(`songs/${userID}/${id}`)
     .then((res) => {
-      console.log(res.data.message.split(" "))
+      //console.log(res.data.message.split(" "))
       dispatch({
         type: DELETE_SONG,
         payload: Number(res.data.message.split(" ")[3]),

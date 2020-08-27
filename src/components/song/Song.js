@@ -108,7 +108,7 @@ const Song = () => {
         <Grid item sm={1}></Grid>
       </Grid>
 
-      <Box display="flex" flexWrap="wrap">
+      <Box display="flex" flexWrap="wrap" mx={2}>
         {spotifyList2.map((item) => {
           return (
             <Box key={item.id} width="250px" m={3} align="left">
