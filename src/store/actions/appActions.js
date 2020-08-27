@@ -81,28 +81,25 @@ export const deleteSong = (userID, id) => (dispatch) => {
 }
 
 export const fetchSuggestion = (id) => (dispatch) => {
-  Axios.get(
-    `https://song-predictor-spotify.herokuapp.com/predict/3eJYgrNmakkgPr4ksZ0mtE`
-  ).then((res) => {
-    console.log(res.data["Suggested track IDs"])
-    dispatch({
-      type: FETCH_SUGGESTION,
-      payload: res.data["Suggested track IDs"],
-    })
-  })
+  Axios.get(`https://fastapi-spotify.herokuapp.com/predict/${id}`).then(
+    (res) => {
+      //console.log(res.data["Suggested track IDs"])
+      dispatch({
+        type: FETCH_SUGGESTION,
+        payload: res.data["Suggested track IDs"],
+      })
+    }
+  )
 }
 
 /*---------------------user Admin-------------------------*/
 
 export const fetchUserList = () => (dispatch) => {
-
-    axiosWithAuth()
-        .get('users')
-        .then(res => {
-            dispatch({ type: FETCH_USERLIST, payload: res.data })
-            
-        })
-        
+  axiosWithAuth()
+    .get("users")
+    .then((res) => {
+      dispatch({ type: FETCH_USERLIST, payload: res.data })
+    })
 }
 // const user = useParams().id
 export const deleteUser = (id) => (dispatch) => {
@@ -121,14 +118,14 @@ export const deleteUser = (id) => (dispatch) => {
 export const editUser = (id, info) => (dispatch) => {
   axiosWithAuth()
     .put(`users/${id}`, info)
-    .then(res => {
-        dispatch({ type: EDIT_USER, payload: res.data})
-        // window.location.reload(true)
-        // window.history.push('/admin')
+    .then((res) => {
+      dispatch({ type: EDIT_USER, payload: res.data })
+      // window.location.reload(true)
+      // window.history.push('/admin')
     })
     .catch((error) => {
       console.log(error.message)
     })
-    
-    // window.location.reload(true)
+
+  // window.location.reload(true)
 }

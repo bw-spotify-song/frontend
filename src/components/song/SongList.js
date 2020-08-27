@@ -48,7 +48,7 @@ const SongList = () => {
   }
 
   const detailHandler = (id) => {
-    history.push(`/song/${id}`)
+    history.push(`/song/${userID}/${id}`)
   }
 
   return (

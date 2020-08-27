@@ -4,8 +4,13 @@ import { Typography, Box } from "@material-ui/core"
 import HomeIcon from "@material-ui/icons/Home"
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount"
 import icon from "../image/spotify-brands.svg"
+import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 
 const Header = () => {
+  const clearHandler = () => {
+    localStorage.clear()
+  }
+
   return (
     <Box
       display="flex"
@@ -25,6 +30,9 @@ const Header = () => {
         </Link>
         <Link className="header--home" to="/admin">
           <SupervisorAccountIcon className="header--icon" />
+        </Link>
+        <Link to="/user/login" onClick={() => clearHandler()}>
+          <ExitToAppIcon className="header--icon" />
         </Link>
       </Box>
     </Box>

@@ -90,6 +90,10 @@ const Login = () => {
         localStorage.setItem("token", res.data.token)
         history.push(`/song/list/${res.data.userID}`)
       })
+      .catch((err) => {
+        console.log(err)
+        alert("Wrong password or email!")
+      })
   }
 
   // side effects
