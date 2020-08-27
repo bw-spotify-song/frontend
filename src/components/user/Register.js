@@ -110,7 +110,7 @@ const Register = () => {
     axiosWithAuth()
       .post(`auth/register`, registerState)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         history.push('/user/login')
       })
     .catch(err => console.log(err))

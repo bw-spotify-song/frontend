@@ -2,7 +2,7 @@ import * as yup from 'yup'
 
 const loginFormSchema = yup.object().shape({
     email: yup.string()
-        .min(2, "Must be at least two characters.")
+        .min(2, "Username must be at least two characters.")
         .required('Name is required'),
     password: yup.string()
       .required("Please provide a password.")

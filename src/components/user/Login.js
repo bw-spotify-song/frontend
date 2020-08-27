@@ -86,7 +86,7 @@ const Login = () => {
     axiosWithAuth()
       .post("/auth/login", loginState)
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         localStorage.setItem("token", res.data.token)
         history.push(`/song/list/${res.data.userID}`)
       })
@@ -115,8 +115,8 @@ const Login = () => {
             display="flex"
             flexDirection="column"
             align="center"
-            width="150px"
-            height="200px"
+            width="50%"
+            height="70%"
             justifyContent="space-around"
             alignItems="center"
             p={10}

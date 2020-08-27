@@ -18,7 +18,7 @@ export default function Input(props){
             autoComplete={props.name}
             autoFocus
             onChange = {props.onChange}
-          />
+      />
       {errorMessage.length !== 0 && <p className="error">{errorMessage}</p>}
     </label>
   );

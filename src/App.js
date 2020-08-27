@@ -12,8 +12,8 @@ import Register from './components/user/Register';
 import Example from './components/example/example';
 import UserProfile from './components/user/editUser';
 import Footer from './components/Footer'
-
 import Admin from "./components/user/Admin"
+import SpotifyAuthMain from '../src/components/user/SpotifyWithAuth/SpotifyWithAuthMain'
 import { theme } from "../src/components/MuiTheme"
 import { ThemeProvider } from "@material-ui/core/styles"
 
@@ -31,6 +31,8 @@ function App() {
               <Route path="/user/login" component={Login} />
 
               <Route path="/user/form" component={Register} />
+
+              <Route path="/user/spotifyauth" component={SpotifyAuthMain} />
 
               {/* ------------- React-2 team ---------------- */}
               <Route path="/song/list/:userID" component={SongList} />
