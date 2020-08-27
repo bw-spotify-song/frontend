@@ -17,7 +17,11 @@ const Footer = () => {
         <h3 className="app-footer-title">Made by Lambda</h3>
       </Box>
       <Box pb={2}>
-        <a href="https://github.com/bw-spotify-song/frontend" target="_blank">
+        <a
+          href="https://github.com/bw-spotify-song/frontend"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <GitHubIcon className="header--icon" />
         </a>
       </Box>
