@@ -37,7 +37,7 @@ function App() {
               {/* ------------- React-2 team ---------------- */}
               <Route path="/song/list/:userID" component={SongList} />
 
-              <Route path="/song/:songID" component={Song} />
+              <Route path="/song/:userID/:songID" component={Song} />
 
               <Route path="/admin" component={Admin} />
               <Route path="/user/:id" component={UserProfile} />

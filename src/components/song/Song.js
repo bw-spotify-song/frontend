@@ -9,17 +9,20 @@ import {
   Card,
   CardContent,
 } from "@material-ui/core"
-import { useParams } from "react-router"
+import { useParams, useHistory } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite"
+import { Link } from "react-router-dom"
 import {
   fetchSuggestion,
   fetchTrack,
   fetchTracks2,
+  postSong,
 } from "../../store/actions/appActions"
 
 const Song = () => {
-  const { songID } = useParams()
+  const { songID, userID } = useParams()
+  const history = useHistory()
   const dispatch = useDispatch()
   const track = useSelector((state) => state.spotifySong)
   const suggestions = useSelector((state) => state.suggestions)
@@ -34,9 +37,21 @@ const Song = () => {
   }
 
   useEffect(() => {
-    console.log(suggestions)
+    //console.log(suggestions)
     dispatch(fetchTracks2(suggestions))
   }, [suggestions])
+
+  const saveHandler = (id) => {
+    dispatch(postSong(userID, { spotifyID: id }))
+  }
+
+  const detailHandler = (id) => {
+    dispatch(fetchTrack(id))
+  }
+
+  const backHandler = () => {
+    history.push(`/song/list/${userID}`)
+  }
 
   return (
     <Box my={3}>
@@ -73,7 +88,14 @@ const Song = () => {
                 <PlayCircleFilledWhiteIcon />
               </a>
             </Box>
-            <Box align="right" mx={3}>
+            <Box display="flex" justifyContent="space-between" mx={3}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => backHandler()}
+              >
+                Back to List
+              </Button>
               <Button
                 variant="contained"
                 color="primary"
@@ -106,10 +128,18 @@ const Song = () => {
                   display="flex"
                   justifyContent="space-around"
                 >
-                  <Button variant="contained" color="secondary">
-                    Delete
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => saveHandler(item.id)}
+                  >
+                    Save
                   </Button>
-                  <Button variant="contained" color="primary">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => detailHandler(item.id)}
+                  >
                     Details
                   </Button>
                 </Box>
