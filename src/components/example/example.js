@@ -1,40 +1,57 @@
 import React, { useState, useEffect } from "react"
 import { axiosWithSpotify, getToken } from "../../utils/example"
+import Plot from "react-plotly.js"
+import Axios from "axios"
 
-const spotifyID = [
-  "3nvuPQTw2zuFAVuLsC9IYQ",
-  "2CT3r93YuSHtm57mjxvjhH",
-  "0LXosXV9ZvmzIpzUsOMuLv",
-  "1UI0l2L66HJ9AtoEOlHzv4",
-  "74X1epeRufHckhuX1KFD04",
-  "1V7VAMQQwJoHECiuaG36Pb",
-  "1LzNfuep1bnAUR9skqdHCK",
-]
+const initialState = {
+  data: [],
+  layout: {},
+  frames: [],
+  config: {
+    displaylogo: false,
+    displayModeBar: false,
+  },
+}
 
 
 const Example = () => {
-  const [list, setList] = useState([])
+  const [data, setData] = useState(initialState)
+  const [figure, setFigure] = useState(null)
+  const [Track, setTrack] = useState(null)
 
   useEffect(() => {
-    getToken()
-    axiosWithSpotify()
-      .get(`https://api.spotify.com/v1/tracks/?ids=${spotifyID.join(",")}`)
-      .then((res) => {
-        //console.log(res.data)
-        setList(res.data.tracks)
-      })
+    Axios.get(
+      `https://fastapi-spotify.herokuapp.com/viz/4lsYP6koQW8qqCUrSh6mse`
+    ).then((res) => {
+      setData(JSON.parse(res.data))
+    })
   }, [])
 
+
+  useEffect(() => {
+     getToken()
+     axiosWithSpotify()
+       .get(`https://api.spotify.com/v1/tracks/4lsYP6koQW8qqCUrSh6mse`)
+       .then((res) => {
+         //console.log(res.data)
+         setTrack(res.data)
+       })
+   }, [])
+
+
   return (
-      <div>
-          <h6>This is an example of Spotify API usage</h6>
-      {list.map((track) => {
-        return (
-          <div key={track.id}>
-            <img src={track.album.images[1].url} alt="cover"></img>
-          </div>
-        )
-      })}
+    <div>
+      <h6>This is an example of DATA API usage</h6>
+      <h2></h2>
+      <Plot
+        className="DataViz"
+        data={data.data}
+        layout={data.layout}
+        frames={data.frames}
+        config={data.config}
+        onInitialized={(figure) => setFigure(figure)}
+        onUpdate={(figure) => setFigure(figure)}
+      />
     </div>
   )
 }
